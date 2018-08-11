@@ -75,6 +75,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Encryption.vb" />
+    <Compile Include="Classes\Feedback.vb" />
     <Compile Include="Classes\SettingsManager.vb" />
     <Compile Include="frm_Main.Designer.vb">
       <DependentUpon>frm_Main.vb</DependentUpon>

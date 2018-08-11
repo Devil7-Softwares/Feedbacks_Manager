@@ -20,57 +20,76 @@ Partial Class frm_Main
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.RibbonControl = New DevExpress.XtraBars.Ribbon.RibbonControl()
-        Me.RibbonPage1 = New DevExpress.XtraBars.Ribbon.RibbonPage()
-        Me.RibbonPageGroup1 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.rp_Home = New DevExpress.XtraBars.Ribbon.RibbonPage()
+        Me.rpg_Data = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonStatusBar = New DevExpress.XtraBars.Ribbon.RibbonStatusBar()
+        Me.MainTab = New DevExpress.XtraTab.XtraTabControl()
+        CType(Me.RibbonControl, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.MainTab, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        ' 
-        ' RibbonControl
-        ' 
-        Me.RibbonControl.ApplicationIcon = Nothing
+        '
+        'RibbonControl
+        '
+        Me.RibbonControl.ExpandCollapseItem.Id = 0
+        Me.RibbonControl.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl.ExpandCollapseItem})
         Me.RibbonControl.Location = New System.Drawing.Point(0, 0)
+        Me.RibbonControl.MaxItemId = 1
         Me.RibbonControl.Name = "RibbonControl"
-        Me.RibbonControl.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.RibbonPage1})
-        Me.RibbonControl.SelectedPage = Me.RibbonPage1
-        Me.RibbonControl.Size = New System.Drawing.Size(442, 141)
-        ' 
-        ' RibbonPage1
-        ' 
-        Me.RibbonPage1.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.RibbonPageGroup1})
-        Me.RibbonPage1.Name = "RibbonPage1"
-        Me.RibbonPage1.Text = "RibbonPage1"
-        ' 
-        ' RibbonPageGroup1
-        ' 
-        Me.RibbonPageGroup1.Name = "RibbonPageGroup1"
-        Me.RibbonPageGroup1.Text = "RibbonPageGroup1"
-        ' 
-        ' RibbonStatusBar
-        ' 
-        Me.RibbonStatusBar.Location = New System.Drawing.Point(0, 425)
+        Me.RibbonControl.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.rp_Home})
+        Me.RibbonControl.Size = New System.Drawing.Size(442, 143)
+        Me.RibbonControl.StatusBar = Me.RibbonStatusBar
+        '
+        'rp_Home
+        '
+        Me.rp_Home.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.rpg_Data})
+        Me.rp_Home.Name = "rp_Home"
+        Me.rp_Home.Text = "Home"
+        '
+        'rpg_Data
+        '
+        Me.rpg_Data.Name = "rpg_Data"
+        Me.rpg_Data.ShowCaptionButton = False
+        Me.rpg_Data.Text = "Data"
+        '
+        'RibbonStatusBar
+        '
+        Me.RibbonStatusBar.Location = New System.Drawing.Point(0, 418)
         Me.RibbonStatusBar.Name = "RibbonStatusBar"
         Me.RibbonStatusBar.Ribbon = Me.RibbonControl
-        Me.RibbonStatusBar.Size = New System.Drawing.Size(442, 24)
-        ' 
-        ' frm_Main
-        ' 
+        Me.RibbonStatusBar.Size = New System.Drawing.Size(442, 31)
+        '
+        'MainTab
+        '
+        Me.MainTab.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.MainTab.HeaderLocation = DevExpress.XtraTab.TabHeaderLocation.Bottom
+        Me.MainTab.Location = New System.Drawing.Point(0, 143)
+        Me.MainTab.Name = "MainTab"
+        Me.MainTab.Size = New System.Drawing.Size(442, 275)
+        Me.MainTab.TabIndex = 2
+        '
+        'frm_Main
+        '
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(442, 449)
+        Me.Controls.Add(Me.MainTab)
         Me.Controls.Add(Me.RibbonStatusBar)
         Me.Controls.Add(Me.RibbonControl)
-
+        Me.Name = "frm_Main"
         Me.Ribbon = Me.RibbonControl
         Me.StatusBar = Me.RibbonStatusBar
         Me.Text = "frm_Main"
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        CType(Me.RibbonControl, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.MainTab, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
-
+        Me.PerformLayout()
 
     End Sub
 
     Friend WithEvents RibbonControl As DevExpress.XtraBars.Ribbon.RibbonControl
-    Friend WithEvents RibbonPage1 As DevExpress.XtraBars.Ribbon.RibbonPage
-    Friend WithEvents RibbonPageGroup1 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
+    Friend WithEvents rp_Home As DevExpress.XtraBars.Ribbon.RibbonPage
+    Friend WithEvents rpg_Data As DevExpress.XtraBars.Ribbon.RibbonPageGroup
     Friend WithEvents RibbonStatusBar As DevExpress.XtraBars.Ribbon.RibbonStatusBar
-
+    Friend WithEvents MainTab As DevExpress.XtraTab.XtraTabControl
 
 End Class
