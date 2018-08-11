@@ -24,7 +24,7 @@ Imports System.Xml.Serialization
 Namespace Classes
     Public Module SettingsManager
 
-        Dim ConfigFilePath As String = IO.Path.Combine(My.Computer.FileSystem.SpecialDirectories.CurrentUserApplicationData, "Devil7-Softwares", "Feedbacks Manager", "Settings.config")
+        Dim ConfigFilePath As String = IO.Path.Combine(My.Computer.FileSystem.SpecialDirectories.CurrentUserApplicationData, "Settings.config")
 
         Dim Settings_ As SettingsBase
         ReadOnly Property Settings As SettingsBase
@@ -45,6 +45,22 @@ Namespace Classes
                 Else
                     Settings_ = New SettingsBase
                 End If
+            Catch ex As Exception
+
+            End Try
+        End Sub
+
+        Sub SaveSettings()
+            Try
+                Dim XS As New XmlSerializer(GetType(SettingsBase))
+
+                If Not My.Computer.FileSystem.DirectoryExists((New IO.FileInfo(ConfigFilePath)).Directory.FullName) Then
+                    My.Computer.FileSystem.CreateDirectory((New IO.FileInfo(ConfigFilePath)).Directory.FullName)
+                End If
+
+                Using Stream As New IO.FileStream(ConfigFilePath, IO.FileMode.Create)
+                    XS.Serialize(Stream, Settings_)
+                End Using
             Catch ex As Exception
 
             End Try
