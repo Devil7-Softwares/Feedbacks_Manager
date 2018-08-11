@@ -24,6 +24,8 @@ Imports System.Web.Script.Serialization
 Namespace Classes
     Public Class Feedback
 
+        <ComponentModel.Browsable(False)>
+        Property _id As String
         Property AppName As String
         Property UserName As String
         Property UserEMail As String
@@ -58,6 +60,10 @@ Namespace Classes
 
         Public Shared Function ParseJSon(JSON As String) As Feedback
             Return New JavaScriptSerializer().Deserialize(Of Feedback)(JSON)
+        End Function
+
+        Public Shared Function ParseJSonList(JSON As String) As List(Of Feedback)
+            Return New JavaScriptSerializer().Deserialize(Of List(Of Feedback))(JSON)
         End Function
 
     End Class
