@@ -22,12 +22,13 @@ Partial Class frm_Main
         Me.RibbonControl = New DevExpress.XtraBars.Ribbon.RibbonControl()
         Me.btn_Refresh = New DevExpress.XtraBars.BarButtonItem()
         Me.btn_Remove = New DevExpress.XtraBars.BarButtonItem()
+        Me.SkinRibbonGalleryBarItem1 = New DevExpress.XtraBars.SkinRibbonGalleryBarItem()
+        Me.btn_SeparateByApp = New DevExpress.XtraBars.BarButtonItem()
         Me.rp_Home = New DevExpress.XtraBars.Ribbon.RibbonPage()
         Me.rpg_Data = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.rpg_Skin = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonStatusBar = New DevExpress.XtraBars.Ribbon.RibbonStatusBar()
         Me.MainTab = New DevExpress.XtraTab.XtraTabControl()
-        Me.rpg_Skin = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
-        Me.SkinRibbonGalleryBarItem1 = New DevExpress.XtraBars.SkinRibbonGalleryBarItem()
         Me.ProgressPanel_Loading = New DevExpress.XtraWaitForm.ProgressPanel()
         Me.BackgroundLoader = New System.ComponentModel.BackgroundWorker()
         CType(Me.RibbonControl, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -37,9 +38,9 @@ Partial Class frm_Main
         'RibbonControl
         '
         Me.RibbonControl.ExpandCollapseItem.Id = 0
-        Me.RibbonControl.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl.ExpandCollapseItem, Me.btn_Refresh, Me.btn_Remove, Me.SkinRibbonGalleryBarItem1})
+        Me.RibbonControl.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl.ExpandCollapseItem, Me.btn_Refresh, Me.btn_Remove, Me.SkinRibbonGalleryBarItem1, Me.btn_SeparateByApp})
         Me.RibbonControl.Location = New System.Drawing.Point(0, 0)
-        Me.RibbonControl.MaxItemId = 4
+        Me.RibbonControl.MaxItemId = 5
         Me.RibbonControl.Name = "RibbonControl"
         Me.RibbonControl.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.rp_Home})
         Me.RibbonControl.Size = New System.Drawing.Size(442, 143)
@@ -54,10 +55,25 @@ Partial Class frm_Main
         '
         'btn_Remove
         '
-        Me.btn_Remove.Caption = "Remove"
+        Me.btn_Remove.Caption = "Remove Selected"
         Me.btn_Remove.Id = 2
         Me.btn_Remove.ImageOptions.SvgImage = Global.Feedbacks_Manager.My.Resources.Resources.remove
         Me.btn_Remove.Name = "btn_Remove"
+        '
+        'SkinRibbonGalleryBarItem1
+        '
+        Me.SkinRibbonGalleryBarItem1.Caption = "SkinRibbonGalleryBarItem1"
+        Me.SkinRibbonGalleryBarItem1.Id = 3
+        Me.SkinRibbonGalleryBarItem1.Name = "SkinRibbonGalleryBarItem1"
+        '
+        'btn_SeparateByApp
+        '
+        Me.btn_SeparateByApp.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.Check
+        Me.btn_SeparateByApp.Caption = "Separate By App"
+        Me.btn_SeparateByApp.Down = True
+        Me.btn_SeparateByApp.Id = 4
+        Me.btn_SeparateByApp.ImageOptions.SvgImage = Global.Feedbacks_Manager.My.Resources.Resources.separate
+        Me.btn_SeparateByApp.Name = "btn_SeparateByApp"
         '
         'rp_Home
         '
@@ -68,10 +84,17 @@ Partial Class frm_Main
         'rpg_Data
         '
         Me.rpg_Data.ItemLinks.Add(Me.btn_Refresh)
-        Me.rpg_Data.ItemLinks.Add(Me.btn_Remove, True)
+        Me.rpg_Data.ItemLinks.Add(Me.btn_SeparateByApp, True)
+        Me.rpg_Data.ItemLinks.Add(Me.btn_Remove)
         Me.rpg_Data.Name = "rpg_Data"
         Me.rpg_Data.ShowCaptionButton = False
         Me.rpg_Data.Text = "Data"
+        '
+        'rpg_Skin
+        '
+        Me.rpg_Skin.ItemLinks.Add(Me.SkinRibbonGalleryBarItem1)
+        Me.rpg_Skin.Name = "rpg_Skin"
+        Me.rpg_Skin.Text = "Skin"
         '
         'RibbonStatusBar
         '
@@ -89,18 +112,6 @@ Partial Class frm_Main
         Me.MainTab.Size = New System.Drawing.Size(442, 275)
         Me.MainTab.TabIndex = 2
         '
-        'rpg_Skin
-        '
-        Me.rpg_Skin.ItemLinks.Add(Me.SkinRibbonGalleryBarItem1)
-        Me.rpg_Skin.Name = "rpg_Skin"
-        Me.rpg_Skin.Text = "Skin"
-        '
-        'SkinRibbonGalleryBarItem1
-        '
-        Me.SkinRibbonGalleryBarItem1.Caption = "SkinRibbonGalleryBarItem1"
-        Me.SkinRibbonGalleryBarItem1.Id = 3
-        Me.SkinRibbonGalleryBarItem1.Name = "SkinRibbonGalleryBarItem1"
-        '
         'ProgressPanel_Loading
         '
         Me.ProgressPanel_Loading.Appearance.BackColor = System.Drawing.Color.Transparent
@@ -113,6 +124,9 @@ Partial Class frm_Main
         Me.ProgressPanel_Loading.Name = "ProgressPanel_Loading"
         Me.ProgressPanel_Loading.Size = New System.Drawing.Size(442, 275)
         Me.ProgressPanel_Loading.TabIndex = 5
+        '
+        'BackgroundLoader
+        '
         '
         'frm_Main
         '
@@ -145,4 +159,5 @@ Partial Class frm_Main
     Friend WithEvents rpg_Skin As DevExpress.XtraBars.Ribbon.RibbonPageGroup
     Friend WithEvents ProgressPanel_Loading As DevExpress.XtraWaitForm.ProgressPanel
     Friend WithEvents BackgroundLoader As System.ComponentModel.BackgroundWorker
+    Friend WithEvents btn_SeparateByApp As DevExpress.XtraBars.BarButtonItem
 End Class
