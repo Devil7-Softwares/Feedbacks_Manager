@@ -1,4 +1,6 @@
-﻿Public Class frm_Main
+﻿Imports DevExpress.XtraBars
+
+Public Class frm_Main
 
     Private Sub frm_Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Classes.SettingsManager.LoadSettings()
@@ -75,6 +77,14 @@
                 Control.DeleteSelected()
             End If
         End If
+    End Sub
+
+    Private Sub btn_Settings_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btn_Settings.ItemClick
+        frm_Settings.ShowDialog()
+    End Sub
+
+    Private Sub btn_Exit_ItemClick(sender As Object, e As ItemClickEventArgs) Handles btn_Exit.ItemClick
+        Me.Close()
     End Sub
 
 End Class

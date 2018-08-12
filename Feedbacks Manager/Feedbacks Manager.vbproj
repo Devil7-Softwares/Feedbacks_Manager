@@ -167,6 +167,12 @@
   <ItemGroup>
     <None Include="Resources\separate.svg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\settings.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exit.svg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <PropertyGroup>
     <PreBuildEvent>break &gt; "$(ProjectDir)My Project\licenses.licx"</PreBuildEvent>

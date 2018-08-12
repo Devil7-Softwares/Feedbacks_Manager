@@ -19,6 +19,7 @@ Partial Class frm_Main
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.RibbonControl = New DevExpress.XtraBars.Ribbon.RibbonControl()
         Me.btn_Refresh = New DevExpress.XtraBars.BarButtonItem()
         Me.btn_Remove = New DevExpress.XtraBars.BarButtonItem()
@@ -31,16 +32,21 @@ Partial Class frm_Main
         Me.MainTab = New DevExpress.XtraTab.XtraTabControl()
         Me.ProgressPanel_Loading = New DevExpress.XtraWaitForm.ProgressPanel()
         Me.BackgroundLoader = New System.ComponentModel.BackgroundWorker()
+        Me.RibbonMenu = New DevExpress.XtraBars.Ribbon.ApplicationMenu(Me.components)
+        Me.btn_Settings = New DevExpress.XtraBars.BarButtonItem()
+        Me.btn_Exit = New DevExpress.XtraBars.BarButtonItem()
         CType(Me.RibbonControl, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MainTab, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RibbonMenu, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'RibbonControl
         '
+        Me.RibbonControl.ApplicationButtonDropDownControl = Me.RibbonMenu
         Me.RibbonControl.ExpandCollapseItem.Id = 0
-        Me.RibbonControl.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl.ExpandCollapseItem, Me.btn_Refresh, Me.btn_Remove, Me.SkinRibbonGalleryBarItem1, Me.btn_SeparateByApp})
+        Me.RibbonControl.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl.ExpandCollapseItem, Me.btn_Refresh, Me.btn_Remove, Me.SkinRibbonGalleryBarItem1, Me.btn_SeparateByApp, Me.btn_Settings, Me.btn_Exit})
         Me.RibbonControl.Location = New System.Drawing.Point(0, 0)
-        Me.RibbonControl.MaxItemId = 5
+        Me.RibbonControl.MaxItemId = 7
         Me.RibbonControl.Name = "RibbonControl"
         Me.RibbonControl.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.rp_Home})
         Me.RibbonControl.Size = New System.Drawing.Size(442, 143)
@@ -128,6 +134,29 @@ Partial Class frm_Main
         'BackgroundLoader
         '
         '
+        'RibbonMenu
+        '
+        Me.RibbonMenu.ItemLinks.Add(Me.btn_Settings)
+        Me.RibbonMenu.ItemLinks.Add(Me.btn_Exit)
+        Me.RibbonMenu.Name = "RibbonMenu"
+        Me.RibbonMenu.Ribbon = Me.RibbonControl
+        '
+        'btn_Settings
+        '
+        Me.btn_Settings.Caption = "Settings"
+        Me.btn_Settings.Description = "Change settings of this application."
+        Me.btn_Settings.Id = 5
+        Me.btn_Settings.ImageOptions.SvgImage = Global.Feedbacks_Manager.My.Resources.Resources.settings
+        Me.btn_Settings.Name = "btn_Settings"
+        '
+        'btn_Exit
+        '
+        Me.btn_Exit.Caption = "Exit"
+        Me.btn_Exit.Description = "Close & exit application"
+        Me.btn_Exit.Id = 6
+        Me.btn_Exit.ImageOptions.SvgImage = Global.Feedbacks_Manager.My.Resources.Resources._exit
+        Me.btn_Exit.Name = "btn_Exit"
+        '
         'frm_Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -143,6 +172,7 @@ Partial Class frm_Main
         Me.Text = "frm_Main"
         CType(Me.RibbonControl, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.MainTab, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RibbonMenu, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -160,4 +190,7 @@ Partial Class frm_Main
     Friend WithEvents ProgressPanel_Loading As DevExpress.XtraWaitForm.ProgressPanel
     Friend WithEvents BackgroundLoader As System.ComponentModel.BackgroundWorker
     Friend WithEvents btn_SeparateByApp As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents RibbonMenu As DevExpress.XtraBars.Ribbon.ApplicationMenu
+    Friend WithEvents btn_Settings As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents btn_Exit As DevExpress.XtraBars.BarButtonItem
 End Class
