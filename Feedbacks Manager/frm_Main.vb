@@ -66,4 +66,15 @@
     Private Sub btn_Refresh_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btn_Refresh.ItemClick
         If Not BackgroundLoader.IsBusy Then BackgroundLoader.RunWorkerAsync()
     End Sub
+
+    Private Sub btn_Remove_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles btn_Remove.ItemClick
+        Dim SelectedTab As DevExpress.XtraTab.XtraTabPage = MainTab.SelectedTabPage
+        If SelectedTab IsNot Nothing Then
+            If SelectedTab.Controls.Count > 0 AndAlso TypeOf SelectedTab.Controls(0) Is Controls.FeedbacksList Then
+                Dim Control As Controls.FeedbacksList = SelectedTab.Controls(0)
+                Control.DeleteSelected()
+            End If
+        End If
+    End Sub
+
 End Class

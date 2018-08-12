@@ -22,6 +22,8 @@
 Namespace Controls
     Public Class FeedbacksList
 
+        Public Event StatusChanged(ByVal sender As Object, ByVal StatusText As String)
+
         Property List As List(Of Classes.Feedback)
             Get
                 If gc_Data.DataSource Is Nothing Then
@@ -76,6 +78,33 @@ Namespace Controls
                 End Try
             End Set
         End Property
+
+        Sub DeleteSelected()
+            Try
+                If gv_Data.SelectedRowsCount > 0 Then
+                    If MsgBox("Are you sure...? Do you want to delete selected rows...?", MsgBoxStyle.Exclamation + MsgBoxStyle.YesNo, "Error") = MsgBoxResult.Yes Then
+                        RaiseEvent StatusChanged(Me, "Deleting items...")
+                        Dim Selected As Integer() = gv_Data.GetSelectedRows
+                        For Each i As Integer In Selected
+                            Dim Feedback As Classes.Feedback = gv_Data.GetRow(i)
+                            If Classes.Feedbacks.Remove(Feedback) Then
+                                List.Remove(Feedback)
+                            End If
+                        Next
+                        gc_Data.RefreshDataSource()
+                        RaiseEvent StatusChanged(Me, "Succesfully detelted items.")
+                    End If
+                End If
+            Catch ex As Exception
+                RaiseEvent StatusChanged(Me, "Failed to delete items...!")
+            End Try
+        End Sub
+
+        Private Sub gv_Data_KeyUp(sender As Object, e As KeyEventArgs) Handles gv_Data.KeyUp
+            If e.KeyData = Keys.Delete Then
+                DeleteSelected()
+            End If
+        End Sub
 
     End Class
 End Namespace
