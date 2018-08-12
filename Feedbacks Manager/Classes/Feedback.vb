@@ -27,12 +27,12 @@ Namespace Classes
         <ComponentModel.Browsable(False)>
         Property _id As String
         Property AppName As String
+        Property Version As String
+        Property BuildDate As String
         Property UserName As String
         Property UserEMail As String
         Property Rating As Integer
         Property Message As String
-        Property Version As String
-        Property BuildDate As String
 
         Sub New()
             Me.AppName = ""
