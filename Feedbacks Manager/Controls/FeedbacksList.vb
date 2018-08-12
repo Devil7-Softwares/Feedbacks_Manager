@@ -84,6 +84,7 @@ Namespace Controls
                 If gv_Data.SelectedRowsCount > 0 Then
                     If MsgBox("Are you sure...? Do you want to delete selected rows...?", MsgBoxStyle.Exclamation + MsgBoxStyle.YesNo, "Error") = MsgBoxResult.Yes Then
                         RaiseEvent StatusChanged(Me, "Deleting items...")
+                        Application.DoEvents()
                         Dim Selected As Integer() = gv_Data.GetSelectedRows
                         For Each i As Integer In Selected
                             Dim Feedback As Classes.Feedback = gv_Data.GetRow(i)
